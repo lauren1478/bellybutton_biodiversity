@@ -78,27 +78,67 @@ function buildCharts(sample) {
 
     var yticks = otu.slice(0,10).map(otuID => `OTU ${otu}`).reverse();
     
-    var xdata = samplevalues.slice(0,10).reverse();
+    var otudata = samplevalues.slice(0,10).reverse();
 
     var hoverlabels = otulabels.slice(0,10).reverse();
 
     // 8. Create the trace for the bar chart. 
     var barData = {
-      x: xdata,
+      x: otudata,
       y: yticks,
       type: "bar",
       text: hoverlabels
 
-   };
+    };
   
     // 9. Create the layout for the bar chart. 
     var barLayout = {
         title: "Top 10 Bacteria Found in Bellybuttons",
       
-    };
+     };
     
    
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout);
   });
 }
+
+
+/// Bubbles
+
+// Bar and Bubble charts
+// Create the buildCharts function.
+function buildCharts(sample) {
+    // Use d3.json to load and retrieve the samples.json file 
+    d3.json("samples.json").then((data) => {
+      
+  
+      // Deliverable 1 Step 10. Use Plotly to plot the data with the layout. 
+      Plotly.newPlot(); 
+  
+      // 1. Create the trace for the bubble chart.
+      var bubbleData = [{
+        x: otudata,
+        y: yticks,
+        text: hoverlabels,
+        mode: "markers",
+        marker: {
+            size: samplevalues,
+            color: otu,
+            colorscale: 'Jet',
+      }}];
+  
+      // 2. Create the layout for the bubble chart.
+      var bubbleLayout = {
+        title: "Bacteria Cultures Per Sample",
+        xaxis: {title: "OTU ID"},
+        automargin: true,
+        hovermode: "closest"
+      };
+  
+      // 3. Use Plotly to plot the data with the layout.
+      Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
+    });
+}
+  
+
