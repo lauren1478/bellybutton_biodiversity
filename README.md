@@ -4,4 +4,4 @@ I found this challenge incredibly difficult and was not able to get anything to 
 
 Dashboard:
 
-![Alt Text]!(https://github.com/lauren1478/bellybutton_biodiversity/blob/main/visual/BB.png)
+![Alt Text](https://github.com/lauren1478/bellybutton_biodiversity/blob/main/visual/BB.png)
